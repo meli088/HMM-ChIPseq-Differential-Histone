@@ -2,12 +2,12 @@
 set -euo pipefail
 
 # --- inputs you already have from the full run ---
-COUNTS="chipdiff-faithful/work/bin_counts.tsv.gz"
-PUTATIVE="chipdiff-faithful/work/putative_regions.bed.gz"
-CHROMSIZES="chipdiff-faithful/refs/mm9.chrom.sizes"
+COUNTS="chipdiff/results/bin_counts.tsv.gz"
+PUTATIVE="chipdiff/results/putative_regions.bed.gz"
+CHROMSIZES="chipdiff/refs/mm9.chrom.sizes"
 
 # --- where to write the mini demo set (these WILL be committed) ---
-DEMODIR="chipdiff-faithful/demo"
+DEMODIR="chipdiff/demo"
 mkdir -p "$DEMODIR"
 
 # Focus the demo on chr19 ~10–20 Mb (small but interesting region)
