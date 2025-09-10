@@ -1,5 +1,0 @@
-DHMS bins:    19296
-DHMS regions: 3679
-ESC-enriched: 15451 (80.1%)
-NPC-enriched: 3845 (19.9%)
-

@@ -1,5 +1,0 @@
-Reproducibility (two independent passes):
-  passA DHMS: 816
-  passB DHMS: 809
-  overlap(A,B): 597
-  score: 73.47692307692307%
