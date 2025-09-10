@@ -37,16 +37,10 @@ venv/
 ############################
 # Project: generated data & results
 ############################
-<<<<<<< HEAD
 # Existing (faithful) generated dirs
 chipdiff-faithful/work/
 chipdiff-faithful/demo_results/
 chipdiff-faithful/plots/
-=======
-chipdiff/results/
-chipdiff/demo_results/
-chipdiff/plots/
->>>>>>> 1cc4293e633deac6856d0cdecd6d6fa8be553cff
 
 # Project result and generated files (do not push results to GitHub)
 chipdiff/results/
@@ -61,8 +55,8 @@ chipdiff/plots/
 *.pdf
 
 # Optional: ignore large raw datasets (leave commented if you intend to track)
-# chipdiff/data/*.gz
-# chipdiff/refs/*.gz
+# chipdiff-faithful/data/*.gz
+# chipdiff-faithful/refs/*.gz
 
 ############################
 # Windows ADS sidecar files occasionally created when moving files
