@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Minimal one-shot demo runner
-# Usage: bash chipdiff/extras/run_demo.sh [OUTPUT_DIR]
+# Usage: bash chipdiff/bin/run_demo.sh [OUTPUT_DIR]
 OUTDIR="${1:-chipdiff/demo_results}"
 LOG="$OUTDIR/demo_run.log"
 
@@ -10,7 +10,7 @@ mkdir -p "$OUTDIR" chipdiff/results chipdiff/demo
 
 echo "[demo] Preparing demo inputs…"
 # Idempotent: creates (or verifies) mini demo inputs
-bash chipdiff/extras/make_mini_dataset.sh >>"$LOG" 2>&1 || true
+bash chipdiff/bin/make_mini_dataset.sh >>"$LOG" 2>&1 || true
 
 echo "[demo] Building LUT (this step is running)…"
 python chipdiff/src/04_build_emission_lut.py \
