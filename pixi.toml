@@ -1,0 +1,69 @@
+[project]
+name = "chipdiff"
+version = "0.1.0"
+description = "Paper-faithful re-implementation of the Xu et al. (2008) ChIPDiff HMM pipeline."
+authors = ["Mélina Farshchi <melinafarshchi@gmail.com>"]
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64", "osx-64", "osx-arm64"]
+
+[dependencies]
+python = ">=3.10,<3.13"
+scipy = "*"
+pandas = "*"
+pybedtools = "*"
+hmmlearn = "*"
+tqdm = "*"
+bedtools = "*"
+xlrd = "*"
+htslib = ">=1.22.1,<2"
+matplotlib = "*"
+
+[tasks]
+# --- Preprocessing ---
+preprocess_esc = "python chipdiff/src/01_preprocess_centers.py --in chipdiff/data/GSM307619_ES.H3K27me3.aligned.txt.gz --out chipdiff/results/ESC.centers.bed.gz --shift 100"
+preprocess_npc = "python chipdiff/src/01_preprocess_centers.py --in chipdiff/data/GSM307614_NP.H3K27me3.aligned.txt.gz --out chipdiff/results/NPC.centers.bed.gz --shift 100"
+
+# --- Binning + putative sites ---
+bin = "python chipdiff/src/02_bin_counts.py --esc chipdiff/results/ESC.centers.bed.gz --npc chipdiff/results/NPC.centers.bed.gz --chrom-sizes chipdiff/refs/mm9.chrom.sizes --bin 1000 --out chipdiff/results/bin_counts.tsv.gz"
+putative = "python chipdiff/src/03_find_putative_sites.py --in chipdiff/results/bin_counts.tsv.gz --eta 0.7 --out-bins chipdiff/results/putative_bins.bed.gz --out-regions chipdiff/results/putative_regions.bed.gz"
+
+# --- Emissions + HMM ---
+lut = "python chipdiff/src/04_build_emission_lut.py --counts chipdiff/results/bin_counts.tsv.gz --tau 3.0 --grid 48 --out chipdiff/results/emission_lut.npz"
+train = "python chipdiff/src/05_train_hmm.py --obs chipdiff/results/bin_counts.tsv.gz --putative chipdiff/results/putative_regions.bed.gz --lut chipdiff/results/emission_lut.npz --out chipdiff/results/transitions.npz --max-iters 20 --train-regions 10000 --seed 125"
+decode = "python chipdiff/src/06_decode_posterior.py --obs chipdiff/results/bin_counts.tsv.gz --putative chipdiff/results/putative_regions.bed.gz --lut chipdiff/results/emission_lut.npz --trans chipdiff/results/transitions.npz --rho 0.95 --out-bins chipdiff/results/dhms_bins.bed.gz --out-regions chipdiff/results/dhms_regions.bed.gz"
+
+# --- Summaries + analysis ---
+summarize = "python chipdiff/src/07_summarize_results.py --bins chipdiff/results/dhms_bins.bed.gz --regions chipdiff/results/dhms_regions.bed.gz --lut chipdiff/results/emission_lut.npz --trans chipdiff/results/transitions.npz --out-txt chipdiff/results/summary.txt --out-json chipdiff/results/summary.json"
+promoters = "python chipdiff/src/08_promoters_vs_counts.py --gtf chipdiff/refs/mm9.refGene.gtf.gz --counts chipdiff/results/bin_counts.tsv.gz --pad 1000 --promoters-out chipdiff/results/mm9_promoters_pm1kb.bed --per-gene-out chipdiff/results/promoter_counts_per_gene.tsv"
+hcne = "python chipdiff/src/09_hcne_from_xls_overlap.py --xls chipdiff/refs/bioinf-2008-0517-File004.xls --sheet HCNE_genes --regions chipdiff/results/dhms_regions.bed.gz --pad 1000 --fold 4.0 --out chipdiff/results/hcne_overlap_summary.txt --tsv chipdiff/results/hcne_per_gene_overlap.tsv"
+
+# --- Validation ---
+control_fpr = "bash chipdiff/bin/control_fpr_test.sh"
+repro = "bash chipdiff/bin/reproducibility_test.sh"
+perf_table = "bash chipdiff/bin/make_performance_table.sh"
+
+# --- Visualization + demo ---
+viz = "python chipdiff/src/11_quick_viz.py --counts chipdiff/results/bin_counts.tsv.gz --dhms-bins chipdiff/results/dhms_bins.bed.gz --region-chr chr14 --region-start 117100000 --region-end 117130000 --ri-chr chr19 --out-dir chipdiff/results/plots"
+demo = "bash chipdiff/bin/run_demo.sh chipdiff/demo_results"
+
+# --- IGV tracks generation ---
+make_igv_tracks = "python chipdiff/src/12_make_igv_tracks.py --counts chipdiff/results/bin_counts.tsv.gz --dhms-bins chipdiff/results/dhms_bins.bed.gz --xls chipdiff/refs/bioinf-2008-0517-File004.xls --sheet HCNE_genes --outdir chipdiff/igv_tracks"
+
+# --- Run it all from start to end ---
+chipdiff_all = """
+  pixi run preprocess_esc &&
+  pixi run preprocess_npc &&
+  pixi run bin &&
+  pixi run putative &&
+  pixi run lut &&
+  pixi run train &&
+  pixi run decode &&
+  pixi run summarize &&
+  pixi run promoters &&
+  pixi run hcne &&
+  pixi run control_fpr &&
+  pixi run repro &&
+  pixi run perf_table &&
+  pixi run viz &&
+  pixi run make_igv_tracks
+"""

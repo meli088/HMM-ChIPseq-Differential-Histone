@@ -1,0 +1,74 @@
+############################
+# General
+############################
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.history/
+
+############################
+# Python
+############################
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+.dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage*
+coverage.xml
+.ipynb_checkpoints/
+.venv/
+venv/
+.env
+.env.*
+
+############################
+# Project: environments & tools
+############################
+.pixi/
+
+############################
+# Project: generated data & results
+############################
+<<<<<<< HEAD
+# Existing (faithful) generated dirs
+chipdiff-faithful/work/
+chipdiff-faithful/demo_results/
+chipdiff-faithful/plots/
+=======
+chipdiff/results/
+chipdiff/demo_results/
+chipdiff/plots/
+>>>>>>> 1cc4293e633deac6856d0cdecd6d6fa8be553cff
+
+# Project result and generated files (do not push results to GitHub)
+chipdiff/results/
+results/
+chipdiff/demo_results/
+demo_results/
+chipdiff/doc/
+doc/
+chipdiff/igv_tracks/
+chipdiff/plots/
+*.png
+*.pdf
+
+# Optional: ignore large raw datasets (leave commented if you intend to track)
+# chipdiff/data/*.gz
+# chipdiff/refs/*.gz
+
+############################
+# Windows ADS sidecar files occasionally created when moving files
+############################
+*:Zone.Identifier
+*Zone.Identifier*
+
+# Logs
+*.log
