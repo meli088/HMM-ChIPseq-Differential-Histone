@@ -1,0 +1,5 @@
+DHMS bins:    101
+DHMS regions: 29
+ESC-enriched: 70 (69.3%)
+NPC-enriched: 31 (30.7%)
+

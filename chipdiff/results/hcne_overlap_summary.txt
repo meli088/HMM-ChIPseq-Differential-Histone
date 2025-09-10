@@ -1,0 +1,3 @@
+HCNE promoter overlap with DHMSs (±1 kb around TSS)
+Up-regulated (n=42): 27 (64.3%)
+Others      (n=181): 37 (20.4%)

@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM307619
+HostUrl=https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSM307619&format=file&file=GSM307619%5FES%2EH3K27me3%2Ealigned%2Etxt%2Egz

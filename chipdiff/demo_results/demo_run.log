@@ -1,0 +1,89 @@
+[done] Wrote demo files:
+  chipdiff-faithful/demo/mini.chrom.sizes
+  chipdiff-faithful/demo/bin_counts.mini.tsv.gz
+  chipdiff-faithful/demo/putative_regions.mini.bed.gz
+  chipdiff-faithful/demo/region.tsv
+[lut] x1=0/117
+[lut] saved chipdiff-faithful/work/emission_lut.demo.npz with shape (118, 59, 3) (x1,x2,states); pmin=1.2588866381394562e-08
+[train] iter 01  loglik=-22113.055
+[train] iter 02  loglik=-22045.337
+[train] iter 03  loglik=-22041.494
+[train] iter 04  loglik=-22041.211
+[train] iter 05  loglik=-22041.182
+[train] iter 06  loglik=-22041.178
+[train] iter 07  loglik=-22041.177
+[train] early stop (Δloglik < 1e-3)
+[train] saved chipdiff-faithful/work/transitions.demo.npz
+[decode] total bins traversed: 3204, called DHMS bins: 101
+[decode] merged DHMS regions: 29
+[decode] total loglik across regions: -22041.177
+Summary of DHMS results:
+  DHMS bins:    101
+  DHMS regions: 29
+  ESC-enriched: 70 (69.3%)
+  NPC-enriched: 31 (30.7%)
+
+[info] Full metadata written to chipdiff-faithful/work/summary.demo.txt and chipdiff-faithful/work/summary.demo.json
+[warn] no bins in region chr14:117100000-117130000
+[warn] no bins in region chr14:117100000-117130000
+[ok] MA plot saved -> chipdiff-faithful/work/plots/ma_all_ESCoverNPC.png
+[ok] histogram saved -> chipdiff-faithful/work/plots/logratio_hist_ESCoverNPC.png
+[ok] DHMS state bar saved -> chipdiff-faithful/work/plots/dhms_state_bar.png
+[ok] DHMS length hist saved -> chipdiff-faithful/work/plots/dhms_length_hist.png
+[ok] DHMS per-chrom saved -> chipdiff-faithful/work/plots/dhms_per_chrom.png
+bash: chipdiff-faithful/extras/make_mini_dataset.sh: No such file or directory
+python: can't open file '/home/melina/HMM-ChIPseq-Differential-Histone/chipdiff-faithful/scripts/04_build_emission_lut.py': [Errno 2] No such file or directory
+bash: chipdiff/extras/make_mini_dataset.sh: No such file or directory
+[lut] x1=0/117
+[lut] saved chipdiff/work/emission_lut.demo.npz with shape (118, 59, 3) (x1,x2,states); pmin=1.2588866381394562e-08
+[train] iter 01  loglik=-22113.055
+[train] iter 02  loglik=-22045.337
+[train] iter 03  loglik=-22041.494
+[train] iter 04  loglik=-22041.211
+[train] iter 05  loglik=-22041.182
+[train] iter 06  loglik=-22041.178
+[train] iter 07  loglik=-22041.177
+[train] early stop (Δloglik < 1e-3)
+[train] saved chipdiff/work/transitions.demo.npz
+[decode] total bins traversed: 3204, called DHMS bins: 101
+[decode] merged DHMS regions: 29
+[decode] total loglik across regions: -22041.177
+Summary of DHMS results:
+  DHMS bins:    101
+  DHMS regions: 29
+  ESC-enriched: 70 (69.3%)
+  NPC-enriched: 31 (30.7%)
+
+[info] Full metadata written to chipdiff/work/summary.demo.txt and chipdiff/work/summary.demo.json
+[warn] no bins in region chr14:117100000-117130000
+[warn] no bins in region chr14:117100000-117130000
+[ok] MA plot saved -> chipdiff/work/plots/ma_all_ESCoverNPC.png
+[ok] histogram saved -> chipdiff/work/plots/logratio_hist_ESCoverNPC.png
+[ok] DHMS state bar saved -> chipdiff/work/plots/dhms_state_bar.png
+bash: chipdiff/extras/make_mini_dataset.sh: No such file or directory
+[lut] x1=0/117
+[lut] saved chipdiff/results/emission_lut.demo.npz with shape (118, 59, 3) (x1,x2,states); pmin=1.2588866381394562e-08
+[train] iter 01  loglik=-22113.055
+[train] iter 02  loglik=-22045.337
+[train] iter 03  loglik=-22041.494
+[train] iter 04  loglik=-22041.211
+[train] iter 05  loglik=-22041.182
+[train] iter 06  loglik=-22041.178
+[train] iter 07  loglik=-22041.177
+[train] early stop (Δloglik < 1e-3)
+[train] saved chipdiff/results/transitions.demo.npz
+[decode] total bins traversed: 3204, called DHMS bins: 101
+[decode] merged DHMS regions: 29
+[decode] total loglik across regions: -22041.177
+Summary of DHMS results:
+  DHMS bins:    101
+  DHMS regions: 29
+  ESC-enriched: 70 (69.3%)
+  NPC-enriched: 31 (30.7%)
+
+[info] Full metadata written to chipdiff/results/summary.demo.txt and chipdiff/results/summary.demo.json
+[warn] no bins in region chr14:117100000-117130000
+[warn] no bins in region chr14:117100000-117130000
+[ok] MA plot saved -> chipdiff/results/plots/ma_all_ESCoverNPC.png
+[ok] histogram saved -> chipdiff/results/plots/logratio_hist_ESCoverNPC.png
+[ok] DHMS state bar saved -> chipdiff/results/plots/dhms_state_bar.png
