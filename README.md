@@ -2,6 +2,12 @@
 
 Tools and scripts for an HMM-based analysis pipeline (chipdiff-faithful). Includes demo data and scripts to preprocess, bin counts, find regions, train an HMM, decode posteriors, and summarize results. Based on Xu et al. (2008)
 
+## Setup for the demo
+
+- Install Pixi: https://pixi.sh/latest/
+- From the repository root, install the environment : `pixi install`
+- To run the demo: `pixi run demo`
+
 # What this repo does
 
 - Preprocess aligned ChIP-seq reads into 1-bp centers  
@@ -21,12 +27,6 @@ Tools and scripts for an HMM-based analysis pipeline (chipdiff-faithful). Includ
 - chipdiff/demo/ — tiny demo dataset and expected shapes  
 - chipdiff/results/ — generated outputs and intermediates (ignored by Git)  
 - pixi.toml — environment spec managed by Pixi
-
-## Setup for the demo
-
-- Install Pixi: https://pixi.sh/latest/
-- From the repository root, install the environment : `pixi install`
-- To run the demo: `pixi run demo`
 
 ## Run the pipeline on real data
 
@@ -55,6 +55,7 @@ Tables: summary of DHMSs, promoter overlap, reproducibility, performance
 ## License
 
 MIT — see `LICENSE`.
+
 
 
 
